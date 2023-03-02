@@ -2,6 +2,7 @@ package com.example.advisible;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.google.ar.sceneform.rendering.Texture;
 import com.google.ar.sceneform.ux.ArFrontFacingFragment;
 import com.google.ar.sceneform.ux.AugmentedFaceNode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +35,8 @@ public class TrailActivity extends AppCompatActivity {
 
     private Texture faceTexture;
     private ModelRenderable faceModel;
+    private String model;
+    private String texture;
 
     private final HashMap<AugmentedFace, AugmentedFaceNode> facesNodes = new HashMap<>();
 
@@ -40,6 +44,12 @@ public class TrailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail);
+
+        ArrayList<String> trail = getIntent().getStringArrayListExtra("trail");
+        model = trail.get(0);
+        texture = trail.get(1);
+        Log.d("MSG1",model);
+        Log.d("MSG2",texture);
 
         getSupportFragmentManager().addFragmentOnAttachListener(this::onAttachFragment);
 
@@ -85,7 +95,7 @@ public class TrailActivity extends AppCompatActivity {
 
     private void loadModels() {
         loaders.add(ModelRenderable.builder()
-                .setSource(this, Uri.parse("https://firebasestorage.googleapis.com/v0/b/advisible-fd9a7.appspot.com/o/white.glb?alt=media&token=7a73c8dc-1009-4a25-a5f1-13ec8dccf003"))
+                .setSource(this, Uri.parse(model))
                 .setIsFilamentGltf(true)
                 .build()
                 .thenAccept(model -> faceModel = model)
@@ -97,7 +107,7 @@ public class TrailActivity extends AppCompatActivity {
 
     private void loadTextures() {
         loaders.add(Texture.builder()
-                .setSource(this, Uri.parse("https://firebasestorage.googleapis.com/v0/b/advisible-fd9a7.appspot.com/o/freckels.png?alt=media&token=f7962115-269d-4d4e-b8d4-faae637404eb"))
+                .setSource(this, Uri.parse(texture))
                 .setUsage(Texture.Usage.COLOR_MAP)
                 .build()
                 .thenAccept(texture -> faceTexture = texture)

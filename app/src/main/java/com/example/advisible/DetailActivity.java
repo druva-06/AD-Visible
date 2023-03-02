@@ -15,6 +15,8 @@ import com.example.advisible.domain.BestSell;
 import com.example.advisible.domain.Feature;
 import com.example.advisible.domain.Items;
 
+import java.util.ArrayList;
+
 public class DetailActivity extends AppCompatActivity {
 
     private ImageView mImage;
@@ -26,6 +28,8 @@ public class DetailActivity extends AppCompatActivity {
     private AppCompatButton mAddToCart;
     private AppCompatButton mBuyBtn;
     private ImageView mTrailImg;
+    private String model;
+    private String texture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,8 @@ public class DetailActivity extends AppCompatActivity {
             if(feature.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(feature.getDescription());
+            model = feature.getModel();
+            texture = feature.getTexture();
         }
         else if(obj instanceof BestSell){
             bestSell = (BestSell) obj;
@@ -66,6 +72,8 @@ public class DetailActivity extends AppCompatActivity {
             if(bestSell.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(bestSell.getDescription());
+            model = bestSell.getModel();
+            texture = bestSell.getTexture();
         }
         else if(obj instanceof Items){
             items = (Items) obj;
@@ -76,12 +84,24 @@ public class DetailActivity extends AppCompatActivity {
             if(items.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(items.getDescription());
+            model = items.getModel();
+            texture = items.getTexture();
+
         }
 
         mTrailImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailActivity.this,TrailActivity.class));
+                if(model.isEmpty() || texture.isEmpty()){
+                    Toast.makeText(DetailActivity.this,"Coming Soon!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(DetailActivity.this,TrailActivity.class);
+                ArrayList<String> trail = new ArrayList<>();
+                trail.add(model);
+                trail.add(texture);
+                intent.putExtra("trail",trail);
+                startActivity(intent);
             }
         });
 
