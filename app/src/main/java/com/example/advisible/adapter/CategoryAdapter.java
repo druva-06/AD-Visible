@@ -11,13 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.advisible.ItemActivity;
 import com.example.advisible.ItemsActivity;
 import com.example.advisible.R;
 import com.example.advisible.domain.Category;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     private Context context;

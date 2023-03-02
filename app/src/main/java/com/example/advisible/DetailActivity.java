@@ -3,7 +3,10 @@ package com.example.advisible;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,6 +33,9 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView mTrailImg;
     private String model;
     private String texture;
+    private AppCompatButton small_sz_btn;
+    private AppCompatButton medium_sz_btn;
+    private AppCompatButton large_sz_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,9 @@ public class DetailActivity extends AppCompatActivity {
         mAddToCart = findViewById(R.id.item_add_cart);
         mBuyBtn = findViewById(R.id.item_buy_now);
         mTrailImg = findViewById(R.id.trail_img);
+        small_sz_btn = findViewById(R.id.small_sz_btn);
+        medium_sz_btn = findViewById(R.id.medium_sz_btn);
+        large_sz_btn = findViewById(R.id.large_sz_btn);
 
         Feature feature;
         BestSell bestSell;
@@ -56,7 +65,7 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(feature.getImg_url()).into(mImage);
             mItemName.setText(feature.getName());
             mPrice.setText(feature.getPrice()+"₹");
-            mItemRating.setText(feature.getRating()+"");
+            mItemRating.setText(feature.getRating()+".0");
             if(feature.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(feature.getDescription());
@@ -68,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(bestSell.getImg_url()).into(mImage);
             mItemName.setText(bestSell.getName());
             mPrice.setText(bestSell.getPrice()+"₹");
-            mItemRating.setText(bestSell.getRating()+"");
+            mItemRating.setText(bestSell.getRating()+".0");
             if(bestSell.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(bestSell.getDescription());
@@ -80,7 +89,7 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(items.getImg_url()).into(mImage);
             mItemName.setText(items.getName());
             mPrice.setText(items.getPrice()+"₹");
-            mItemRating.setText(items.getRating()+"");
+            mItemRating.setText(items.getRating()+".0");
             if(items.getRating() > 3) mItemRatDesc.setText("Very Good!");
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(items.getDescription());
@@ -88,6 +97,8 @@ public class DetailActivity extends AppCompatActivity {
             texture = items.getTexture();
 
         }
+
+        /* Perform the action by clicking the Try Now! Image */
 
         mTrailImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,12 +116,54 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        /* Changing the Text Color and Background of the Size chart */
+
+        small_sz_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                small_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
+                small_sz_btn.setTextColor(Color.WHITE);
+                medium_sz_btn.setBackgroundResource(0);
+                large_sz_btn.setBackgroundResource(0);
+                medium_sz_btn.setTextColor(Color.BLACK);
+                large_sz_btn.setTextColor(Color.BLACK);
+            }
+        });
+
+        medium_sz_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                medium_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
+                medium_sz_btn.setTextColor(Color.WHITE);
+                small_sz_btn.setBackgroundResource(0);
+                large_sz_btn.setBackgroundResource(0);
+                small_sz_btn.setTextColor(Color.BLACK);
+                large_sz_btn.setTextColor(Color.BLACK);
+            }
+        });
+
+        large_sz_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                large_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
+                large_sz_btn.setTextColor(Color.WHITE);
+                small_sz_btn.setBackgroundResource(0);
+                medium_sz_btn.setBackgroundResource(0);
+                small_sz_btn.setTextColor(Color.BLACK);
+                medium_sz_btn.setTextColor(Color.BLACK);
+            }
+        });
+
+        /* Onclick the add to Cart Button */
+
         mAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
+        /* Onclick the Buy Now Button */
 
         mBuyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
