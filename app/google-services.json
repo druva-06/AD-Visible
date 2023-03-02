@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977192598429",
+    "project_id": "advisible-fd9a7",
+    "storage_bucket": "advisible-fd9a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977192598429:android:1a30357a13c57bc8538d74",
+        "android_client_info": {
+          "package_name": "com.example.advisible"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977192598429-d59aiep0kko5cf5s42r5oq6i8hgqbiul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbpFOaoetDG9XcGhBgOu8irR1cirieGh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977192598429-d59aiep0kko5cf5s42r5oq6i8hgqbiul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
