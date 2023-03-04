@@ -32,7 +32,6 @@ public class DetailActivity extends AppCompatActivity {
     private AppCompatButton mBuyBtn;
     private ImageView mTrailImg;
     private String model;
-    private String texture;
     private AppCompatButton small_sz_btn;
     private AppCompatButton medium_sz_btn;
     private AppCompatButton large_sz_btn;
@@ -70,7 +69,6 @@ public class DetailActivity extends AppCompatActivity {
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(feature.getDescription());
             model = feature.getModel();
-            texture = feature.getTexture();
         }
         else if(obj instanceof BestSell){
             bestSell = (BestSell) obj;
@@ -82,7 +80,6 @@ public class DetailActivity extends AppCompatActivity {
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(bestSell.getDescription());
             model = bestSell.getModel();
-            texture = bestSell.getTexture();
         }
         else if(obj instanceof Items){
             items = (Items) obj;
@@ -94,7 +91,6 @@ public class DetailActivity extends AppCompatActivity {
             else mItemRatDesc.setText("Good!");
             mItemDesc.setText(items.getDescription());
             model = items.getModel();
-            texture = items.getTexture();
 
         }
 
@@ -103,15 +99,12 @@ public class DetailActivity extends AppCompatActivity {
         mTrailImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(model.isEmpty() || texture.isEmpty()){
+                if(model.isEmpty()){
                     Toast.makeText(DetailActivity.this,"Coming Soon!",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent = new Intent(DetailActivity.this,TrailActivity.class);
-                ArrayList<String> trail = new ArrayList<>();
-                trail.add(model);
-                trail.add(texture);
-                intent.putExtra("trail",trail);
+                intent.putExtra("model",model);
                 startActivity(intent);
             }
         });
@@ -123,8 +116,8 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 small_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
                 small_sz_btn.setTextColor(Color.WHITE);
-                medium_sz_btn.setBackgroundResource(0);
-                large_sz_btn.setBackgroundResource(0);
+                medium_sz_btn.setBackgroundResource(R.color.button_clr);
+                large_sz_btn.setBackgroundResource(R.color.button_clr);
                 medium_sz_btn.setTextColor(Color.BLACK);
                 large_sz_btn.setTextColor(Color.BLACK);
             }
@@ -135,8 +128,8 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 medium_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
                 medium_sz_btn.setTextColor(Color.WHITE);
-                small_sz_btn.setBackgroundResource(0);
-                large_sz_btn.setBackgroundResource(0);
+                small_sz_btn.setBackgroundResource(R.color.button_clr);
+                large_sz_btn.setBackgroundResource(R.color.button_clr);
                 small_sz_btn.setTextColor(Color.BLACK);
                 large_sz_btn.setTextColor(Color.BLACK);
             }
@@ -147,8 +140,8 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 large_sz_btn.setBackgroundResource(R.drawable.login_btn_bg);
                 large_sz_btn.setTextColor(Color.WHITE);
-                small_sz_btn.setBackgroundResource(0);
-                medium_sz_btn.setBackgroundResource(0);
+                small_sz_btn.setBackgroundResource(R.color.button_clr);
+                medium_sz_btn.setBackgroundResource(R.color.button_clr);
                 small_sz_btn.setTextColor(Color.BLACK);
                 medium_sz_btn.setTextColor(Color.BLACK);
             }

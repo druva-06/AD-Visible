@@ -33,10 +33,8 @@ public class TrailActivity extends AppCompatActivity {
     private ArFrontFacingFragment arFragment;
     private ArSceneView arSceneView;
 
-    private Texture faceTexture;
     private ModelRenderable faceModel;
     private String model;
-    private String texture;
 
     private final HashMap<AugmentedFace, AugmentedFaceNode> facesNodes = new HashMap<>();
 
@@ -45,11 +43,8 @@ public class TrailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail);
 
-        ArrayList<String> trail = getIntent().getStringArrayListExtra("trail");
-        model = trail.get(0);
-        texture = trail.get(1);
+        model = getIntent().getStringExtra("model");
         Log.d("MSG1",model);
-        Log.d("MSG2",texture);
 
         getSupportFragmentManager().addFragmentOnAttachListener(this::onAttachFragment);
 
@@ -62,7 +57,6 @@ public class TrailActivity extends AppCompatActivity {
         }
 
         loadModels();
-        loadTextures();
     }
     public void onAttachFragment(@NonNull FragmentManager fragmentManager, @NonNull Fragment fragment) {
         if (fragment.getId() == R.id.arFragment) {
@@ -105,20 +99,8 @@ public class TrailActivity extends AppCompatActivity {
                 }));
     }
 
-    private void loadTextures() {
-        loaders.add(Texture.builder()
-                .setSource(this, Uri.parse(texture))
-                .setUsage(Texture.Usage.COLOR_MAP)
-                .build()
-                .thenAccept(texture -> faceTexture = texture)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, "Unable to load texture", Toast.LENGTH_LONG).show();
-                    return null;
-                }));
-    }
-
     public void onAugmentedFaceTrackingUpdate(AugmentedFace augmentedFace) {
-        if (faceModel == null || faceTexture == null) {
+        if (faceModel == null) {
             return;
         }
 
@@ -133,7 +115,6 @@ public class TrailActivity extends AppCompatActivity {
                     modelInstance.setShadowCaster(false);
                     modelInstance.setShadowReceiver(true);
 
-                    faceNode.setFaceMeshTexture(faceTexture);
 
                     arSceneView.getScene().addChild(faceNode);
 

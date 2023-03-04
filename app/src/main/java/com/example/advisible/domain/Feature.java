@@ -7,7 +7,6 @@ public class Feature implements Serializable {
     String img_url;
     String name;
     String model;
-    String texture;
 
     public String getModel() {
         return model;
@@ -17,13 +16,6 @@ public class Feature implements Serializable {
         this.model = model;
     }
 
-    public String getTexture() {
-        return texture;
-    }
-
-    public void setTexture(String texture) {
-        this.texture = texture;
-    }
 
     double price;
     int rating;

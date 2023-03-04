@@ -7,7 +7,6 @@ public class Items implements Serializable {
     String img_url;
     String name;
     String type;
-    String texture;
     String model;
     int rating;
     double price;
@@ -46,14 +45,7 @@ public class Items implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-
-    public String getTexture() {
-        return texture;
-    }
-
-    public void setTexture(String texture) {
-        this.texture = texture;
-    }
+    
 
     public String getModel() {
         return model;
