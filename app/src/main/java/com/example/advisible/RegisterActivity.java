@@ -3,6 +3,7 @@ package com.example.advisible;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPassword;
     private AppCompatButton mRegBtn;
     private FirebaseAuth mAuth;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.reg_password);
         mRegBtn = findViewById(R.id.reg_button);
         mAuth = FirebaseAuth.getInstance();
+        mToolbar = findViewById(R.id.reg_toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override

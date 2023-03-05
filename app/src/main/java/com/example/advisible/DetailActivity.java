@@ -2,6 +2,7 @@ package com.example.advisible;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -38,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
     Feature feature;
     BestSell bestSell;
     Items items;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,10 @@ public class DetailActivity extends AppCompatActivity {
         small_sz_btn = findViewById(R.id.small_sz_btn);
         medium_sz_btn = findViewById(R.id.medium_sz_btn);
         large_sz_btn = findViewById(R.id.large_sz_btn);
+        mToolbar = findViewById(R.id.detail_toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Object obj = getIntent().getSerializableExtra("detail");

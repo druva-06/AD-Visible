@@ -3,6 +3,7 @@ package com.example.advisible;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,7 @@ public class AddressActivity extends AppCompatActivity {
     List<Address> mAddressList;
     private FirebaseFirestore mStore;
     private FirebaseAuth mAuth;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,10 @@ public class AddressActivity extends AppCompatActivity {
         mAddressAdapter = new AddressAdapter(getApplicationContext(),mAddressList);
         mStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        mToolbar = findViewById(R.id.address_toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddressRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mAddressRecyclerView.setAdapter(mAddressAdapter);

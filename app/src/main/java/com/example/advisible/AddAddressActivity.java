@@ -3,6 +3,7 @@ package com.example.advisible;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class AddAddressActivity extends AppCompatActivity {
     private AppCompatButton mAddAddressBtn;
     private FirebaseFirestore mStore;
     private FirebaseAuth mAuth;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,10 @@ public class AddAddressActivity extends AppCompatActivity {
 
         mStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        mToolbar = findViewById(R.id.add_address_toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override

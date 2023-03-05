@@ -39,6 +39,7 @@ public class ItemsActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.item_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(type);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         mStore = FirebaseFirestore.getInstance();

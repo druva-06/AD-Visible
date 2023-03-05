@@ -10,8 +10,9 @@ import android.widget.Toast;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private TextView mTotal;
+    private TextView mSubTotal;
     private AppCompatButton payBtn;
+    private TextView mTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,11 @@ public class PaymentActivity extends AppCompatActivity {
 
         double amount = getIntent().getDoubleExtra("amount",0.0);
 
-        mTotal = findViewById(R.id.sub_total);
+        mSubTotal = findViewById(R.id.sub_total);
+        mTotal = findViewById(R.id.tot_amt);
         payBtn = findViewById(R.id.pay_btn);
 
+        mSubTotal.setText(amount+"₹");
         mTotal.setText(amount+"₹");
 
         payBtn.setOnClickListener(new View.OnClickListener() {
