@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.example.advisible.adapter.AddressAdapter;
 import com.example.advisible.domain.Address;
+import com.example.advisible.domain.BestSell;
+import com.example.advisible.domain.Feature;
+import com.example.advisible.domain.Items;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,8 @@ public class AddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+
+        Object obj = getIntent().getSerializableExtra("item");
 
         mAddressRecyclerView = findViewById(R.id.address_recycler);
         paymentBtn = findViewById(R.id.payment_btn);
@@ -66,6 +71,28 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AddressActivity.this,AddAddressActivity.class));
+            }
+        });
+
+        paymentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double amount = 0.0;
+                if(obj instanceof BestSell){
+                    BestSell bestSell = (BestSell) obj;
+                    amount = bestSell.getPrice();
+                }
+                else if(obj instanceof Feature){
+                    Feature feature = (Feature) obj;
+                    amount = feature.getPrice();
+                }
+                else if(obj instanceof Items){
+                    Items items = (Items) obj;
+                    amount = items.getPrice();
+                }
+                Intent intent = new Intent(AddressActivity.this,PaymentActivity.class);
+                intent.putExtra("amount",amount);
+                startActivity(intent);
             }
         });
     }

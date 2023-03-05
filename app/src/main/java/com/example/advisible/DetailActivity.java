@@ -35,6 +35,9 @@ public class DetailActivity extends AppCompatActivity {
     private AppCompatButton small_sz_btn;
     private AppCompatButton medium_sz_btn;
     private AppCompatButton large_sz_btn;
+    Feature feature;
+    BestSell bestSell;
+    Items items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +57,6 @@ public class DetailActivity extends AppCompatActivity {
         medium_sz_btn = findViewById(R.id.medium_sz_btn);
         large_sz_btn = findViewById(R.id.large_sz_btn);
 
-        Feature feature;
-        BestSell bestSell;
-        Items items;
 
         Object obj = getIntent().getSerializableExtra("detail");
         if(obj instanceof Feature){
@@ -161,7 +161,17 @@ public class DetailActivity extends AppCompatActivity {
         mBuyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailActivity.this,AddressActivity.class));
+                Intent intent = new Intent(DetailActivity.this,AddressActivity.class);
+                if(feature!=null){
+                    intent.putExtra("item", feature);
+                }
+                else if(bestSell!=null){
+                    intent.putExtra("item", bestSell);
+                }
+                else if(items!=null){
+                    intent.putExtra("item", items);
+                }
+                startActivity(intent);
             }
         });
     }
