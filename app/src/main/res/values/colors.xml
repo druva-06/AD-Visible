@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_blue">#667EEA</color>
     <color name="button_clr">#C7C7D1</color>
+    <color name="order_clr">#0D810D</color>
+
 </resources>

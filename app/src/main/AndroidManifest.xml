@@ -26,20 +26,24 @@
         android:theme="@style/Theme.ADVisible"
         tools:targetApi="31">
         <activity
-            android:name=".PaymentActivity"
+            android:name=".OrderActivity"
             android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:parentActivityName=".AddressActivity" />
         <activity
             android:name=".AddAddressActivity"
             android:exported="false"
-            android:parentActivityName=".AddressActivity"/>
+            android:parentActivityName=".AddressActivity" />
         <activity
             android:name=".ItemsActivity"
             android:exported="false"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".AddressActivity"
             android:exported="false"
-            android:parentActivityName=".DetailActivity"/>
+            android:parentActivityName=".DetailActivity" />
 
         <meta-data
             android:name="com.google.ar.core"
@@ -51,18 +55,18 @@
         <activity
             android:name=".DetailActivity"
             android:exported="false"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

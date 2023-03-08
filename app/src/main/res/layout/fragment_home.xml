@@ -21,6 +21,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:textSize="18sp"
                     android:text="Category"/>
 
@@ -51,17 +53,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="Featured"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="end"
-                    android:id="@+id/fea_see_all"
-                    android:text="See All"
-                    android:textSize="18sp"/>
             </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/feature_recycler"
@@ -80,17 +75,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:text="Best Sell"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="5dp"
-                    android:gravity="end"
-                    android:id="@+id/best_sell_see_all"
-                    android:text="See All"
-                    android:textSize="18sp"/>
             </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bestsell_recycler"

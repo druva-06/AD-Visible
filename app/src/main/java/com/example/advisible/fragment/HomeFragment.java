@@ -53,8 +53,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView mBestSellRecyclerView;
 
     private TextView mCatSeeAll;
-    private TextView mFeaSeeAll;
-    private TextView mBestSellSeeAll;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -148,28 +146,7 @@ public class HomeFragment extends Fragment {
         /* See All Functions */
 
         mCatSeeAll = view.findViewById(R.id.cat_see_all);
-        mFeaSeeAll = view.findViewById(R.id.fea_see_all);
-        mBestSellSeeAll = view.findViewById(R.id.best_sell_see_all);
-
         mCatSeeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ItemsActivity.class);
-                intent.putExtra("type","all");
-                startActivity(intent);
-            }
-        });
-
-        mFeaSeeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ItemsActivity.class);
-                intent.putExtra("type","all");
-                startActivity(intent);
-            }
-        });
-
-        mBestSellSeeAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ItemsActivity.class);

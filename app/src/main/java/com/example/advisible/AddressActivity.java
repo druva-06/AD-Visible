@@ -36,6 +36,9 @@ public class AddressActivity extends AppCompatActivity {
     private FirebaseFirestore mStore;
     private FirebaseAuth mAuth;
     private Toolbar mToolbar;
+    private BestSell bestSell;
+    private Feature feature;
+    private Items items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,21 +86,25 @@ public class AddressActivity extends AppCompatActivity {
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double amount = 0.0;
                 if(obj instanceof BestSell){
-                    BestSell bestSell = (BestSell) obj;
-                    amount = bestSell.getPrice();
+                    bestSell = (BestSell) obj;
                 }
                 else if(obj instanceof Feature){
-                    Feature feature = (Feature) obj;
-                    amount = feature.getPrice();
+                    feature = (Feature) obj;
                 }
                 else if(obj instanceof Items){
-                    Items items = (Items) obj;
-                    amount = items.getPrice();
+                    items = (Items) obj;
                 }
                 Intent intent = new Intent(AddressActivity.this,PaymentActivity.class);
-                intent.putExtra("amount",amount);
+                if(feature!=null){
+                    intent.putExtra("item", feature);
+                }
+                else if(bestSell!=null){
+                    intent.putExtra("item", bestSell);
+                }
+                else if(items!=null){
+                    intent.putExtra("item", items);
+                }
                 startActivity(intent);
             }
         });
